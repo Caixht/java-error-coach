@@ -1,2 +1,31 @@
-# java-error-coach
-An AI-powered IntelliJ IDEA plugin that helps Java beginners understand and fix runtime/compilation errors.
+# Java 报错教练
+
+一个给 Java 初学者用的 IntelliJ IDEA 插件：选中报错文本，右键 → 得到中文解释、关联知识点和三级递进提示。**不给完整修复代码** —— 目的是让人下次不再犯，而不是替他改完。
+
+> 状态：规划完成，代码尚未开始（2026-11-09.单人练手项目，目标是完整走一遍从想法到交付的过程
+
+## 为什么做
+
+大厂 AI 插件已把「一键分析报错」做成免费标配，再拼功能没意义。但「看不懂英文堆栈」「AI 甩一段改好的代码、下次照样错」没人认真解决。所以定位是**教学工具**，不是效率工具。
+
+## 技术栈
+
+Java 21 · IntelliJ IDEA 2025.3（分支 253）· IntelliJ Platform Gradle Plugin 2.x · JDK HttpClient + Jackson · JUnit 5 · DeepSeek（`deepseek-v4-flash`，OpenAI 兼容格式）
+
+API Key 只存 IDE 凭据库，不进代码、不进仓库
+
+## 现在能做什么
+
+仓库暂时没有可运行的代码.
+
+## 计划
+
+14 周、八个环节：需求与范围 → 预研 → 设计 → 编码 → 测试 → 打包 → 文档 → 复盘。
+
+## 文档
+
+待补充
+
+## 许可证
+
+MIT License
