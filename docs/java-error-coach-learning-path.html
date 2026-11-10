@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java 报错教练 · 学习路径</title>
+<style>
+:root{--ink:#20211f;--muted:#5f5e5a;--line:#e3e1da;--bg:#f7f6f2;--card:#fff;--blue:#185fa5;--blue-bg:#e6f1fb;--green:#0f6e56;--green-bg:#e1f5ee;--red:#a32d2d;--red-bg:#fcebeb;--amber:#854f0b;--amber-bg:#faeeda;--purple:#534ab7;--purple-bg:#eeedfe}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.78;font-size:14px}
+.wrap{max-width:940px;margin:0 auto;padding:48px 28px 80px}
+header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:28px}
+h1{font-size:26px;font-weight:600;margin:8px 0 8px}
+.sub{color:var(--muted);font-size:14px;margin:0}
+.tag{display:inline-block;background:var(--purple-bg);color:var(--purple);font-size:12px;padding:2px 10px;border-radius:20px;margin-right:6px}
+h2{font-size:18px;font-weight:600;margin:38px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-size:15px;font-weight:600;margin:0 0 4px}
+p{margin:8px 0}
+ul,ol{margin:6px 0;padding-left:22px}
+li{margin:4px 0}
+code{background:#f0efe9;padding:1px 5px;border-radius:4px;font-family:Consolas,"SF Mono",monospace;font-size:12.5px}
+pre{background:#f0efe9;padding:14px 16px;border-radius:10px;overflow-x:auto;font-size:12.5px;font-family:Consolas,"SF Mono",monospace}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;background:var(--card)}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#f2f1ec;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.note{border-left:3px solid var(--blue);background:var(--blue-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.warn{border-left:3px solid var(--red);background:var(--red-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.good{border-left:3px solid var(--green);background:var(--green-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.amber{border-left:3px solid var(--amber);background:var(--amber-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.small{font-size:12.5px;color:var(--muted)}
+a{color:var(--blue)}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;margin:16px 0;overflow:hidden}
+.stage-h{display:flex;align-items:baseline;gap:12px;background:#f2f1ec;padding:12px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.stage-n{font-size:12px;font-weight:600;color:#fff;background:var(--purple);border-radius:5px;padding:2px 8px}
+.stage-t{font-size:15px;font-weight:600}
+.stage-w{font-size:12.5px;color:var(--muted);margin-left:auto}
+.stage-b{padding:16px 20px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lbl{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin:10px 0 2px}
+.check{display:flex;align-items:flex-start;gap:9px;padding:7px 10px;border-radius:7px;cursor:pointer;font-size:13px}
+.check:hover{background:#f7f6f2}
+.check input{margin-top:5px;flex:none;width:15px;height:15px;accent-color:#534ab7;cursor:pointer}
+.check.done span{text-decoration:line-through;color:#9a9891}
+.progress{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar{flex:1;min-width:180px;height:8px;background:#eeece6;border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--purple);border-radius:6px;transition:width .25s}
+.pct{font-size:13px;font-weight:600;min-width:74px;text-align:right}
+.btn{background:transparent;border:0.5px solid var(--line);border-radius:8px;padding:5px 12px;font-size:12.5px;color:var(--muted);cursor:pointer;font-family:inherit}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+@media(max-width:720px){.cols{grid-template-columns:1fr}.wrap{padding:28px 16px 60px}.stage-w{margin-left:0}}
+@media print{body{background:#fff}.progress{display:none}input[type=checkbox]{-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div><span class="tag">配套学习路径</span><span class="tag">6 阶段</span><span class="tag">14 周</span></div>
+<h1>Java 报错教练 · 学习路径</h1>
+<p class="sub">按周把「要学的知识」对齐「要写的代码」· 勾选进度会自动保存在本机浏览器</p>
+</header>
+
+<div class="progress">
+<div style="font-size:13px;font-weight:600;">学习进度</div>
+<div class="bar"><i id="barFill"></i></div>
+<div class="pct" id="pctText">0 / 0</div>
+<button class="btn" id="resetBtn">清空进度</button>
+</div>
+
+<div class="hero" style="margin-top:16px">
+<p style="margin-top:0"><strong>这份路径怎么用：</strong>它不是一份「要先学完再开始做」的课表，而是<strong>刚好够用就往前走</strong>的补给线 —— 每个阶段学的东西，两周内就会在项目里用上。用得上才记得住。</p>
+<p style="margin-bottom:0">配套<a href="java-error-coach-plan.html">《项目规划 v2.1》 →</a>一起看（同目录）。阶段编号 S0–S5 对应规划的 W1–W14 与八个工程环节。</p>
+</div>
+
+<h2>五条学习原则（比知识点更重要）</h2>
+<div class="card">
+<ol>
+<li><strong>先跑通，再理解。</strong>第一遍照官方文档把 Hello World 跑起来，第二遍才逐行问「这行在干嘛」。顺序反了会卡死在概念里。</li>
+<li><strong>每个知识点必须有一个能运行的结果。</strong>看懂 ≠ 会写。看完 HttpClient 就亲手发一次请求，看完 plugin.xml 就亲手登记一个菜单项。</li>
+<li><strong>不整段抄代码。</strong>可以读官方示例、可以查 API，但要自己敲一遍并改点东西。你练的是「能讲清数据流」的能力，抄来的代码讲不清。</li>
+<li><strong>官方文档优先。</strong>插件 SDK 的 API 变动很快，2024 年之前的博客大概率失效；遇到冲突以 JetBrains 官方文档与示例仓库为准。</li>
+<li><strong>卡住两小时就停。</strong>把现象、报错、试过的方法写成一段文字（这本身就是工程记录），然后换路或第二天再看。别在环境配置上耗尽热情。</li>
+</ol>
+</div>
+
+<h2>S0 · Java 21 与命令行基本功</h2>
+<div class="stage">
+<div class="stage-h"><span class="stage-n">S0</span><span class="stage-t">把「会写 Java」变成「能写工程代码」</span><span class="stage-w">W1–2 · 对应环节 01 / 02</span></div>
+<div class="stage-b">
+<p class="small">目标：能不用 IDE 自动补全，独立写出一个读文件、发 HTTP、解析 JSON 的小命令行程序。这是后面所有代码的底座。</p>
+<div class="cols">
+<div>
+<div class="lbl">要学的知识点（括号里是白话）</div>
+<ul>
+<li>集合、泛型、异常、IO —— 工程代码里每天都在用</li>
+<li>Lambda 与 Stream：写过滤、分组、统计时用得上</li>
+<li><code>record</code> / <code>sealed</code> / switch 模式匹配（Java 21）：用 record 当数据类，比手写 getter 干净得多</li>
+<li><code>java.net.http.HttpClient</code>：JDK 自带的 HTTP 客户端，不用引第三方库</li>
+<li>Jackson <code>ObjectMapper</code>：JSON ↔ Java 对象互相转换</li>
+<li>包结构、类职责、接口与实现分离</li>
+</ul>
+<div class="lbl">为什么现在学</div>
+<p class="small">插件的领域层（错误分类、模板路由）是纯 Java；基础设施层的 HTTP 与 JSON 也全靠这些。这里省下的时间，后面会成倍还回来。</p>
+</div>
+<div>
+<div class="lbl">动手任务</div>
+<ul>
+<li>写一个命令行程序：读一个文本文件 → POST 到本地假接口 → 把返回的 JSON 映射成 <code>record</code> 并打印</li>
+<li>故意传一段坏 JSON，看它怎么抛异常、你怎么处理</li>
+<li>用 <code>try/catch</code> 之外再试一次「包装后上抛」，体会异常分层</li>
+</ul>
+<div class="lbl">检验标准（学会了就打勾）</div>
+<div class="checks" data-stage="s0">
+<label class="check"><input type="checkbox"><span>能独立写出 HttpClient POST 并解析响应，不靠复制粘贴</span></label>
+<label class="check"><input type="checkbox"><span>能说清 <code>record</code> 与普通类的区别、什么时候该用哪个</span></label>
+<label class="check"><input type="checkbox"><span>能解释「为什么要分接口与实现」，并举出本项目里的一个例子</span></label>
+<label class="check"><input type="checkbox"><span>装好 JDK 21，能在命令行用 <code>java -version</code> 验证</span></label>
+</div>
+</div>
+</div>
+<div class="lbl">资料</div><p class="small">Oracle Java Tutorials（官方，选 Collections / Exceptions / Lambda 三章即可）；JDK 21 <code>HttpClient</code> 与 <code>ObjectMapper</code> 官方 Javadoc / README。<strong>不必通读，用到哪查到哪。</strong></p>
+<div class="lbl">预期卡点</div><p class="small">JDK 版本与 IDE 里配置的 JDK 不一致；Jackson 版本与 Java 21 的兼容性。先把 <code>java -version</code> 和 <code>./gradlew -v</code> 两个输出看清楚再往下走。</p>
+</div>
+</div>
+
+<h2>S1 · Gradle 与 Git</h2>
+<div class="stage">
+<div class="stage-h"><span class="stage-n">S1</span><span class="stage-t">让构建和版本管理变成肌肉记忆</span><span class="stage-w">W2–3 · 对应环节 02 / 04</span></div>
+<div class="stage-b">
+<p class="small">目标：能逐行解释自己项目的 <code>build.gradle.kts</code>，并能在 Git 里安全地回滚一次。</p>
+<div class="cols">
+<div>
+<div class="lbl">要学的知识点</div>
+<ul>
+<li>Gradle Wrapper 是什么（把构建工具版本锁进仓库，换机器结果一致）</li>
+<li><code>plugins</code> / <code>repositories</code> / <code>dependencies</code> 三个块各管什么</li>
+<li>常用任务：<code>build</code>、<code>runIde</code>、<code>buildPlugin</code>、<code>test</code></li>
+<li>⚠️ 2.x 插件 ID 是 <code>org.jetbrains.intellij.platform</code>；老教程的 <code>org.jetbrains.intellij</code>（1.x）已废弃</li>
+<li>Git：init / add / commit / branch / merge / tag / revert / <code>.gitignore</code></li>
+<li>提交粒度：一次提交只做一件事，信息写「为什么」</li>
+<li><code>sinceBuild</code> 声明最低兼容 IDE；<strong>官方强烈建议不写 <code>untilBuild</code></strong>（不设上限即可兼容后续所有构建）</li>
+<li>构建号必须是真实分支号（2025.3 → 253），编造的值会被 Plugin Verifier 判定无效</li>
+</ul>
+<div class="lbl">为什么现在学</div>
+<p class="small">插件开发的第一道坎从来不是 Java，是构建脚本。把它搞懂，后面 12 周都顺。</p>
+</div>
+<div>
+<div class="lbl">动手任务</div>
+<ul>
+<li>从零建一个 Gradle Java 项目，跑通 <code>./gradlew build</code></li>
+<li>生成插件项目骨架，跑通 <code>./gradlew runIde</code>（会启动一个沙箱 IDE）</li>
+<li>给仓库加 <code>.gitignore</code>（排除 <code>build/</code>、<code>.idea/</code>、<code>.gradle/</code>、任何含 Key 的文件）</li>
+<li>故意提交一次错误改动，再用 <code>git revert</code> 撤掉</li>
+</ul>
+<div class="lbl">检验标准</div>
+<div class="checks" data-stage="s1">
+<label class="check"><input type="checkbox"><span>能逐行解释 build.gradle.kts 每一行在做什么</span></label>
+<label class="check"><input type="checkbox"><span>能说清 <code>runIde</code> 与 <code>buildPlugin</code> 的区别</span></label>
+<label class="check"><input type="checkbox"><span>沙箱 IDE 能启动，且不会弄坏日常使用的 IDEA 配置</span></label>
+<label class="check"><input type="checkbox"><span>能独立完成一次 revert，并解释 revert 与 reset 的差别</span></label>
+<label class="check"><input type="checkbox"><span>仓库里有第一个 tag，提交信息写的是「为什么」</span></label>
+<label class="check"><input type="checkbox"><span>能说清 sinceBuild 与 platformVersion 的区别，以及为什么不写 untilBuild</span></label>
+</div>
+</div>
+</div>
+<div class="lbl">资料</div><p class="small">IntelliJ Platform Gradle Plugin 2.x 官方文档（配置写法以此为准）；Gradle 官方 Getting Started；Pro Git 中文版前 3 章。</p>
+<div class="lbl">预期卡点</div><p class="small">依赖拉不下来；误设了 <code>untilBuild</code> 上限导致新版 IDE 装不上；<code>sinceBuild</code> 写成编造的分支号；把 1.x 与 2.x 的写法混抄。另注意 2025.3（253）起官方产品类型调整，<code>intellijIdeaCommunity()</code> 只适用于更早版本，应使用 <code>intellijIdea()</code>。对照官方示例逐字检查，别凭印象改。</p>
+</div>
+</div>
+
+<h2>S2 · IntelliJ Platform SDK 基础</h2>
+<div class="stage">
+<div class="stage-h"><span class="stage-n">S2</span><span class="stage-t">理解「插件是怎么挂进 IDE 的」</span><span class="stage-w">W3–5 · 对应环节 02 / 03 / 04</span></div>
+<div class="stage-b">
+<p class="small">目标：能说清「我写的类」到「IDE 里的菜单项」之间发生了什么，并做出一个真实可用的面板。</p>
+<div class="cols">
+<div>
+<div class="lbl">要学的知识点</div>
+<ul>
+<li><code>plugin.xml</code>（插件的户口本）：ID、依赖、Action 与扩展点登记</li>
+<li><strong>扩展点 EP</strong>：IDE 预留的插槽，你注册实现，IDE 在对应时机调用你</li>
+<li><code>AnAction</code> 与 <code>AnActionEvent</code>：拿 project、editor、选中文本</li>
+<li><code>ToolWindowFactory</code> 与面板；<code>Service</code>（IDE 管理的单例）</li>
+<li><strong>EDT 与后台线程</strong>：耗时操作绝不能放在画界面的线程上</li>
+<li><code>SelectionModel</code> / <code>Document</code>：读取编辑器里的文本</li>
+</ul>
+<div class="lbl">为什么现在学</div>
+<p class="small">W3–4 要打通端到端闭环，这一阶段的知识就是闭环的骨架。</p>
+</div>
+<div>
+<div class="lbl">动手任务</div>
+<ul>
+<li>Hello World Action：右键菜单点一下，在面板显示当前选中的文本</li>
+<li>做一个 ToolWindow，含一个「再给一层」按钮</li>
+<li>把一次网络请求放到后台线程，观察放错线程时 IDE 卡住的现象（值得故意试一次）</li>
+<li>画一张图：用户点击 → Action → Service → 面板，标出每一步在哪个线程</li>
+</ul>
+<div class="lbl">检验标准</div>
+<div class="checks" data-stage="s2">
+<label class="check"><input type="checkbox"><span>能解释「类写好了为什么还必须在 plugin.xml 登记」</span></label>
+<label class="check"><input type="checkbox"><span>能从 AnActionEvent 里拿到选中的报错文本</span></label>
+<label class="check"><input type="checkbox"><span>能说清 EDT 是什么、为什么网络请求不能放在上面</span></label>
+<label class="check"><input type="checkbox"><span>沙箱 IDE 里能看到自己的菜单项和面板</span></label>
+<label class="check"><input type="checkbox"><span>能画出本项目的四层架构图并讲清每层职责</span></label>
+</div>
+</div>
+</div>
+<div class="lbl">资料</div><p class="small">IntelliJ Platform Plugin SDK：Actions、Tool Windows、Services、Threading Model 四章；官方 <code>intellij-sdk-code-samples</code> 示例仓库（先看 action_basics 与 tool_window 两个样例）。</p>
+<div class="lbl">预期卡点</div><p class="small">菜单不出现（多为 registration 写错或依赖未声明）、面板空白、线程用错导致界面冻结。<strong>先跑通官方样例，再把自己的逻辑一点点换进去</strong>，不要一次改太多。</p>
+</div>
+</div>
+
+<h2>S3 · HTTP、JSON 与提示词工程</h2>
+<div class="stage">
+<div class="stage-h"><span class="stage-n">S3</span><span class="stage-t">把「调 AI」变成一项可靠的工程能力</span><span class="stage-w">W5–8 · 对应环节 04</span></div>
+<div class="stage-b">
+<p class="small">目标：不再把大模型当魔法，而是当成一个「不稳定、会超时、会返回脏数据」的外部依赖来对待。</p>
+<div class="cols">
+<div>
+<div class="lbl">要学的知识点</div>
+<ul>
+<li>OpenAI 兼容的 chat completions 协议：URL、Header、请求体、响应体</li>
+<li><code>response_format: {"type":"json_object"}</code> 强制结构化输出</li>
+<li>超时、重试与退避、HTTP 429 与余额不足的处理</li>
+<li>提示词设计：角色约束、few-shot 示例、输出格式、置信度字段</li>
+<li>「分层提示、禁止给完整答案」这类约束怎么写进 prompt 才真的生效</li>
+<li>脱敏与最小上下文：只发必要片段，不发整个项目</li>
+</ul>
+<div class="lbl">为什么现在学</div>
+<p class="small">这一阶段决定项目是「能跑的 Demo」还是「能用的软件」。四条失败路径的价值，往往比主流程更能体现工程水平。</p>
+</div>
+<div>
+<div class="lbl">动手任务</div>
+<ul>
+<li>用 JDK 自带 <code>HttpServer</code> 起一个假 DeepSeek，返回预设 JSON</li>
+<li>先用假接口跑通全链路，再换成真 Key 调一次真实请求</li>
+<li>写 6 类错误的 Skill 模板，各配 2–3 个 few-shot 示例</li>
+<li>故意让假接口返回非法 JSON、超时、429，验证降级是否生效</li>
+</ul>
+<div class="lbl">检验标准</div>
+<div class="checks" data-stage="s3">
+<label class="check"><input type="checkbox"><span>能手写一次完整请求并解释每个字段</span></label>
+<label class="check"><input type="checkbox"><span>断网 / 超时 / 429 / 非法 JSON 四种情况都不白屏</span></label>
+<label class="check"><input type="checkbox"><span>模型输出稳定落在约定的 JSON 契约里</span></label>
+<label class="check"><input type="checkbox"><span>提示词能稳定做到「不输出完整修复代码」</span></label>
+<label class="check"><input type="checkbox"><span>API Key 只存在 CredentialStore，代码与日志里都搜不到</span></label>
+</div>
+</div>
+</div>
+<div class="lbl">资料</div><p class="small">DeepSeek 官方 API 文档（模型名、价格、JSON Output）。<strong>注意 2026 年现状</strong>：<code>deepseek-chat</code> / <code>deepseek-reasoner</code> 已于 2026-07-24 弃用，现在用 <code>deepseek-v4-flash</code>；Base URL 为 <code>https://api.deepseek.com</code>。</p>
+<div class="lbl">预期卡点</div><p class="small">照老教程写错模型名导致 404；把 prompt 写得太长导致输出不稳定；把 Key 硬编码进源码。<strong>这三条是这个项目最典型的坑，提前避开。</strong></p>
+</div>
+</div>
+
+<h2>S4 · 测试与工程化</h2>
+<div class="stage">
+<div class="stage-h"><span class="stage-n">S4</span><span class="stage-t">从「我觉得没问题」到「我验证过」</span><span class="stage-w">W8–11 · 对应环节 05</span></div>
+<div class="stage-b">
+<p class="small">目标：写出能重复运行的测试，并用一张评测表判断 AI 输出到底好不好。</p>
+<div class="cols">
+<div>
+<div class="lbl">要学的知识点</div>
+<ul>
+<li>JUnit 5：断言、参数化测试、测试命名、before/after</li>
+<li>测试替身：为什么用假接口而不是真调模型（省钱、可重复、可制造故障）</li>
+<li>回归测试：改一处后重跑同一批用例，防止「改好一个弄坏三个」</li>
+<li>评测思维：给 AI 输出定义可打分的指标，而不是凭感觉</li>
+<li><code>PersistentStateComponent</code>：让 IDE 托管状态，重启后自动恢复</li>
+<li>缓存、幂等、配置外置、日志分级</li>
+</ul>
+<div class="lbl">为什么现在学</div>
+<p class="small">分层设计是否真的做对了，测试会立刻告诉你：如果领域层必须启动 IDE 才能测，说明分层没做好。</p>
+</div>
+<div>
+<div class="lbl">动手任务</div>
+<ul>
+<li>给错误分类、Skill 路由、JSON 解析、脱敏各写 3–4 个单测</li>
+<li>把 30 例真实报错整理成资源文件，写一张评分表</li>
+<li>记录 5 个 badcase，说明「为什么错、模板怎么改」</li>
+<li>实现错题库持久化，重启沙箱 IDE 后数据仍在</li>
+</ul>
+<div class="lbl">检验标准</div>
+<div class="checks" data-stage="s4">
+<label class="check"><input type="checkbox"><span>≥15 个单测通过，且不需要启动 IDE 就能跑</span></label>
+<label class="check"><input type="checkbox"><span>假接口测试能覆盖超时与非法 JSON</span></label>
+<label class="check"><input type="checkbox"><span>30 例评测表填满，含至少 5 个 badcase 记录</span></label>
+<label class="check"><input type="checkbox"><span>重启 IDE 后错题库数据不丢</span></label>
+<label class="check"><input type="checkbox"><span>能说清「单元测试」与「手工评测」各自解决什么问题</span></label>
+</div>
+</div>
+</div>
+<div class="lbl">资料</div><p class="small">JUnit 5 User Guide；IntelliJ Platform SDK「Persisting State of Components」与「Persisting Sensitive Data」两章。</p>
+<div class="lbl">预期卡点</div><p class="small">把 IDE 相关代码混进领域层导致无法单测 —— 这时回头改分层，别硬写测试。这个「被迫重构」的瞬间，正是练手最值钱的收获。</p>
+</div>
+</div>
+
+<h2>S5 · 构建交付与复盘</h2>
+<div class="stage">
+<div class="stage-h"><span class="stage-n">S5</span><span class="stage-t">让陌生人也能装上、用上、看懂</span><span class="stage-w">W11–14 · 对应环节 06 / 07 / 08</span></div>
+<div class="stage-b">
+<p class="small">目标：完成从「我这台机器能跑」到「别人也能跑」的最后一公里，并诚实总结这一轮。</p>
+<div class="cols">
+<div>
+<div class="lbl">要学的知识点</div>
+<ul>
+<li><code>buildPlugin</code> 产物结构；<code>sinceBuild</code> 开放上限的兼容区间（不要写 <code>untilBuild</code>）</li>
+<li>Plugin Verifier：<code>verifyPlugin</code> 做二进制兼容性检查；<code>@Internal</code> / <code>@Experimental</code> 等 API 状态标注为什么不能随便用</li>
+<li>「已验证 / 声明支持 / 未验证」三列兼容表怎么写才诚实</li>
+<li>从磁盘安装插件（Install Plugin from Disk）的完整流程</li>
+<li>语义化版本、CHANGELOG、tag 与发布标记</li>
+<li>技术文档写作：README 要写给「完全没参与过项目的人」</li>
+<li>演示录屏：只讲一条主流程 + 一个失败降级，3 分钟足够</li>
+<li>复盘方法：估算偏差、卡点耗时、badcase 归因、下次三条改进</li>
+</ul>
+<div class="lbl">为什么现在学</div>
+<p class="small">这是很多人从没走到的环节，也是「写过代码」和「交付过软件」的分界线。</p>
+</div>
+<div>
+<div class="lbl">动手任务</div>
+<ul>
+<li>打包 zip，在另一台机器（或另一份全新 IDEA 配置）按 README 装好并跑通</li>
+<li>跑一次 <code>./gradlew verifyPlugin</code>，读懂报告里每条警告，把结论写进 README 兼容表</li>
+<li>请 2–3 位同学只看 README 自行安装，记录他们卡在哪一步</li>
+<li>写 CHANGELOG 与 3 分钟演示脚本并录屏</li>
+<li>写一页复盘：时间估错在哪、卡最久的坑、下次怎么改</li>
+</ul>
+<div class="lbl">检验标准</div>
+<div class="checks" data-stage="s5">
+<label class="check"><input type="checkbox"><span>zip 能在另一台机器安装并跑通主流程</span></label>
+<label class="check"><input type="checkbox"><span><code>verifyPlugin</code> 通过，且能解释报告里每条警告的含义</span></label>
+<label class="check"><input type="checkbox"><span>README 写清了安装、配 Key、数据流向与已知限制</span></label>
+<label class="check"><input type="checkbox"><span>至少有 2 位同学独立按文档装成功</span></label>
+<label class="check"><input type="checkbox"><span>仓库打上 v1.0 tag，CHANGELOG 完整</span></label>
+<label class="check"><input type="checkbox"><span>复盘一页写完，且能白板讲清数据流与三条失败路径</span></label>
+</div>
+</div>
+</div>
+<div class="lbl">资料</div><p class="small">IntelliJ Platform SDK「Publishing a Plugin」「Build Number Ranges」「Verifying Plugin Compatibility」；README 写法可参考任意你喜欢的开源项目。</p>
+<div class="lbl">预期卡点</div><p class="small">兼容区间写错导致目标 IDE 显示「不兼容」；README 里默认读者知道你知道的一切。<strong>检验方法很简单：找一个没参与过的人，让他只靠文档操作。</strong></p>
+</div>
+</div>
+
+<h2>常见坑速查表</h2>
+<table>
+<tr><th style="width:210px">现象</th><th>多半是</th></tr>
+<tr><td>Gradle 同步失败 / 依赖拉不到</td><td>抄了 1.x 的插件 ID；漏了 <code>defaultRepositories()</code>；JDK 版本与目标平台不匹配</td></tr>
+<tr><td>菜单项 / 面板不出现</td><td><code>plugin.xml</code> 没登记、包名写错、依赖模块（如 <code>com.intellij.java</code>）未声明</td></tr>
+<tr><td>插件显示「不兼容」</td><td>误写了 <code>untilBuild</code> 上限把新版 IDE 挡在外面；<code>sinceBuild</code> 与真实分支号对不上（2025.3 对应 253）；构建号不能编造</td></tr>
+<tr><td><code>verifyPlugin</code> 构建失败</td><td>2.15.0 起默认严格：兼容性问题 / Internal API / Override-Only API 会直接失败。正确做法是换回公开 API，不是调低 <code>failureLevel</code> 掩盖</td></tr>
+<tr><td>目标平台依赖解析不到</td><td>2025.3+ 官方产品类型调整，<code>intellijIdeaCommunity()</code> 已不适用，改用 <code>intellijIdea()</code></td></tr>
+<tr><td>IDE 卡住不动</td><td>在 EDT 上发了网络请求或做了重活</td></tr>
+<tr><td>调模型报 404 / 模型不存在</td><td>还在用已弃用的 <code>deepseek-chat</code> / <code>deepseek-reasoner</code></td></tr>
+<tr><td>模型输出格式乱</td><td>没开 <code>json_object</code>，或 prompt 里没明确要求 JSON；缺字段校验</td></tr>
+<tr><td>重启后数据丢了</td><td>用了普通字段或临时文件，没走 <code>PersistentStateComponent</code></td></tr>
+<tr><td>Key 出现在仓库里</td><td>硬编码或写进配置文件；应放 CredentialStore，并把相关文件加入 <code>.gitignore</code></td></tr>
+</table>
+
+<h2>每周自检（三句话就够）</h2>
+<div class="card">
+<ol>
+<li>这周<strong>留下了什么可检查的证据</strong>？（文档、测试、tag、可运行的 Demo，任一即可）</li>
+<li>这周<strong>卡最久的是什么</strong>，我写下来了吗？</li>
+<li>下周要做的那一件事，<strong>能不能在两周内演示给别人看</strong>？</li>
+</ol>
+<p style="margin-bottom:0" class="small">三个问题都答得出来，节奏就没跑偏。答不出来时，先停下补证据，别急着往下写代码。</p>
+</div>
+
+<div class="good"><strong>最后一句：</strong>这份路径里没有一项知识是「天才才学得会」的，它们只是需要按顺序、各花一两周。你愿意投入时间，就已经满足了最难的那个条件。剩下的交给节奏 —— 每两周一个能演示的东西，14 周后你会有一个从规格到复盘都完整的项目。</div>
+
+<footer>Java 报错教练 · 学习路径 v2.1（补充兼容性与 Plugin Verifier）· 6 阶段 / 14 周 · 更新于 2026-11-09 · 配套《项目规划 v2.1》</footer>
+</div>
+
+<script>
+(function(){
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.checks input[type=checkbox]'));
+  var barFill = document.getElementById('barFill');
+  var pctText = document.getElementById('pctText');
+  var resetBtn = document.getElementById('resetBtn');
+  var KEY = 'java-error-coach-learning-progress-v1';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+  function update(){
+    var done = 0;
+    boxes.forEach(function(b, i){
+      var label = b.closest('.check');
+      if (b.checked) { done++; if (label) label.classList.add('done'); }
+      else if (label) label.classList.remove('done');
+      try { saved[i] = b.checked; } catch (e) {}
+    });
+    var pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+    if (barFill) barFill.style.width = pct + '%';
+    if (pctText) pctText.textContent = pct + '% · ' + done + ' / ' + boxes.length;
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+  }
+  boxes.forEach(function(b, i){ b.checked = !!saved[i]; b.addEventListener('change', update); });
+  if (resetBtn) resetBtn.addEventListener('click', function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>
