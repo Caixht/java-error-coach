@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java 报错教练 · 项目规划 v2.1（练手导向）</title>
+<style>
+:root{--ink:#20211f;--muted:#5f5e5a;--line:#e3e1da;--bg:#f7f6f2;--card:#fff;--blue:#185fa5;--blue-bg:#e6f1fb;--green:#0f6e56;--green-bg:#e1f5ee;--red:#a32d2d;--red-bg:#fcebeb;--amber:#854f0b;--amber-bg:#faeeda;--purple:#534ab7;--purple-bg:#eeedfe}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.78;font-size:14px}
+.wrap{max-width:940px;margin:0 auto;padding:48px 28px 80px}
+header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:28px}
+h1{font-size:26px;font-weight:600;margin:8px 0 8px;letter-spacing:-.3px}
+.sub{color:var(--muted);font-size:14px;margin:0}
+.tag{display:inline-block;background:var(--blue-bg);color:var(--blue);font-size:12px;padding:2px 10px;border-radius:20px;margin-right:6px}
+.tag.g{background:var(--green-bg);color:var(--green)}
+h2{font-size:18px;font-weight:600;margin:42px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-size:15px;font-weight:600;margin:24px 0 8px}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:22px}
+li{margin:5px 0}
+code{background:#f0efe9;padding:1px 5px;border-radius:4px;font-family:Consolas,"SF Mono",monospace;font-size:12.5px}
+pre{background:#f0efe9;padding:14px 16px;border-radius:10px;overflow-x:auto;font-size:12.5px;line-height:1.65;font-family:Consolas,"SF Mono",monospace}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;background:var(--card)}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#f2f1ec;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.metric .k{font-size:12px;color:var(--muted)}
+.metric .v{font-size:20px;font-weight:600;margin-top:4px}
+.note{border-left:3px solid var(--blue);background:var(--blue-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.warn{border-left:3px solid var(--red);background:var(--red-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.good{border-left:3px solid var(--green);background:var(--green-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.amber{border-left:3px solid var(--amber);background:var(--amber-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.badge{display:inline-block;font-size:12px;padding:1px 8px;border-radius:5px;font-weight:600}
+.b-ok{background:var(--green-bg);color:var(--green)}
+.b-warn{background:var(--amber-bg);color:var(--amber)}
+.b-no{background:var(--red-bg);color:var(--red)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.small{font-size:12.5px;color:var(--muted)}
+.gloss{font-size:13px}
+.gloss b{font-weight:600}
+a{color:var(--blue)}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.wrap{padding:28px 16px 60px}}
+@media print{body{background:#fff}.wrap{max-width:100%}h2{break-after:avoid}.card,table,.hero{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div><span class="tag">项目规划 v2.1</span><span class="tag g">练手导向</span><span class="tag">单人 · 14 周</span><span class="tag">平台已拍板</span></div>
+<h1>Java 报错教练 · 项目规划</h1>
+<p class="sub">目标：完整走一遍软件从想法到交付的全过程 · 2026-11-09</p>
+</header>
+
+<div class="hero">
+<p style="margin-top:0"><strong>这份规划和 v1 最大的不同：成功标准变了。</strong>你明确了项目用途是练手、感受完整开发过程，所以它不再以「产品有没有创新、答辩能不能拿分」为评判标准，而是以「<strong>八个工程环节是否都认真走过、都留下可检查的证据</strong>」为标准。功能可以很小，链路必须完整。</p>
+<p style="margin-bottom:0">配套文档：<strong>《学习路径》</strong>（同目录 <code>java-error-coach-learning-path.html</code>），按周把「要学的知识」和「要写的代码」对齐。<a href="java-error-coach-learning-path.html">打开《学习路径》 →</a>　两份一起用。</p>
+</div>
+
+<div class="grid">
+<div class="metric"><div class="k">总周期</div><div class="v">14 周</div></div>
+<div class="metric"><div class="k">每周投入</div><div class="v">10–12 h</div></div>
+<div class="metric"><div class="k">工程环节</div><div class="v">8 环</div></div>
+<div class="metric"><div class="k">最终产物</div><div class="v">可安装 zip</div></div>
+</div>
+
+<h2>0. 目标与成功标准</h2>
+<table>
+<tr><th style="width:120px">项</th><th>内容</th></tr>
+<tr><td>项目目标</td><td>一个人、从零到一，完整经历「需求 → 预研 → 设计 → 编码 → 测试 → 构建 → 文档 → 复盘」，产出一个别人能装上使用的 IntelliJ IDEA 插件</td></tr>
+<tr><td>不是目标</td><td>不追求商业价值、不追求功能超过大厂插件、不上架插件市场、不做用户增长、不发论文</td></tr>
+<tr><td>成功标准</td><td>① 八个环节每环都有一份证据（见第 1 节）<br>② 插件能打包成 zip，在另一台机器的 IDEA 上从磁盘安装并跑通<br>③ 你能不看代码，在白板上讲清数据流和三条失败路径<br>④ 有一页诚实的复盘：哪里估错了、卡了多久、下次怎么改</td></tr>
+<tr><td>能力目标</td><td>Gradle 构建、宿主平台 API、HTTP 与 JSON、结构化提示词、自动化测试、版本管理、技术文档 —— 这七项都是可迁移到任何 Java 工作的通用能力</td></tr>
+</table>
+<div class="good"><strong>为什么仍然选这个题目：</strong>① 你自己就是目标用户（这叫 dogfooding，自己用自己做的东西），需求不用猜，每天写 Java 都能验证；② 项目虽小，但链路齐全 —— 网络调用、JSON、UI、持久化、配置、安全、测试、打包全都碰得到；③ 它的输出恰好是「讲清楚你哪里写错了」，练手过程顺便在学 Java。v1 里查到的竞品结论仍然成立：<strong>不做「免费版通义灵码」，做「教学向教练」</strong>（分层提示、不直接给完整修复代码、中文知识点、错题库），这不是为了创新，而是为了让范围稳定、让你自己天天用得上。</div>
+
+<h2>1. 完整开发流程：八环节与交付证据</h2>
+<table>
+<tr><th style="width:44px">#</th><th style="width:130px">环节</th><th>练到的能力</th><th style="width:210px">必须留下的证据</th></tr>
+<tr><td>01</td><td>需求与范围</td><td>把模糊想法写成规格，学会主动取舍</td><td>做 / 不做清单、3 条用户故事</td></tr>
+<tr><td>02</td><td>技术预研</td><td>先验证最难一环，而不是写到一半发现走不通</td><td>Hello World 插件 + 一页预研记录</td></tr>
+<tr><td>03</td><td>设计</td><td>分层、接口、数据结构、失败路径</td><td>架构图、模块职责表、JSON 契约</td></tr>
+<tr><td>04</td><td>编码</td><td>版本管理、提交粒度、异常与日志</td><td>干净的 Git 历史、可编译的分支</td></tr>
+<tr><td>05</td><td>测试</td><td>单元测试、假服务、手工用例与评测</td><td>JUnit 用例 + 30 例评分表</td></tr>
+<tr><td>06</td><td>构建与打包</td><td>Gradle 任务、版本兼容区间、产物管理</td><td>可安装 zip + 兼容范围说明</td></tr>
+<tr><td>07</td><td>文档与交付</td><td>写给完全陌生的读者看</td><td>README、CHANGELOG、3 分钟演示录屏</td></tr>
+<tr><td>08</td><td>复盘</td><td>估算偏差分析、坏例子归档</td><td>一页复盘笔记</td></tr>
+</table>
+<div class="amber">大多数人练手只做了第 04 环。你要的「完整过程」，价值恰恰在 01–03 和 05–08。</div>
+
+<h2>2. 技术选型（已拍板，照此执行）</h2>
+<table>
+<tr><th style="width:120px">项</th><th style="width:250px">选择</th><th>为什么</th></tr>
+<tr><td>形态</td><td>IntelliJ IDEA 插件</td><td>你熟悉 JetBrains 系；插件开发覆盖构建系统、宿主 API、扩展点、沙箱调试、兼容区间与打包，是「完整工程链路」成色最高的选择</td></tr>
+<tr><td>语言</td><td>Java 21</td><td>你的主语言；不引入 Kotlin，避免练手阶段同时学两件事。JDK 21 是 LTS（长期支持版），资料多、特性够用</td></tr>
+<tr><td>构建</td><td>Gradle Wrapper + <code>org.jetbrains.intellij.platform</code> 2.x</td><td>官方现行方案；wrapper 保证换机器构建结果一致</td></tr>
+<tr><td>目标 IDE</td><td>IntelliJ IDEA Community <strong>2025.3</strong>（分支 253）</td><td><strong>刻意不追最新</strong>：这一档要求 JDK 21，教程与问答最多；2026.2+ 已要求 Java 25，对练手是额外变量。建议单独下载这个版本作为开发专用 IDE，与日常用的 IDEA 分开</td></tr>
+<tr><td>HTTP</td><td>JDK 内置 <code>java.net.http.HttpClient</code></td><td>不引入 OkHttp 等第三方库，少一个依赖，也顺带练 Java 标准库</td></tr>
+<tr><td>JSON</td><td>Jackson（<code>ObjectMapper</code>）</td><td>JDK 没有内置 JSON 解析；Jackson 是工业标准，学会它能迁移到任何 Java 项目</td></tr>
+<tr><td>测试</td><td>JUnit 5 + JDK 自带 <code>HttpServer</code> 做假接口</td><td>不引入 Mock 框架也能测网络代码，而且更练基本功</td></tr>
+<tr><td>持久化</td><td><code>PersistentStateComponent</code>（IDE 托管 XML）</td><td>零后端、零数据库，练的是平台 API 与状态管理</td></tr>
+<tr><td>密钥</td><td><code>CredentialStore</code> / PasswordSafe</td><td>API Key 绝不写进代码、配置文件或日志</td></tr>
+<tr><td>模型</td><td>DeepSeek <code>deepseek-v4-flash</code>，<code>response_format: json_object</code></td><td>便宜、中文好、支持强制 JSON 输出；设置页保留可切换的 base_url / model，方便换成任意 OpenAI 兼容服务</td></tr>
+<tr><td>版本管理</td><td>Git + 私有或公开仓库，每周一个 tag</td><td>练习提交粒度、回滚、发布标记</td></tr>
+</table>
+
+<div class="warn"><strong>三个最容易照抄错的地方（2026-11 核实）：</strong><br>
+① 老教程里的插件 ID 是 <code>org.jetbrains.intellij</code>（1.x），<strong>已废弃</strong>；2024.2+ 必须用 2.x 的 <code>org.jetbrains.intellij.platform</code>（当前 2.19.0，以官方文档为准）。写法完全不同，别混着抄。<br>
+② 平台与 Java 版本绑定：2024.2–2026.1 需 <strong>Java 21</strong>，2026.2+ 需 <strong>Java 25</strong>。选 2025.3 就是选 JDK 21。<br>
+③ DeepSeek 旧模型名 <code>deepseek-chat</code> / <code>deepseek-reasoner</code> 已于 2026-07-24 弃用，现在是 <code>deepseek-v4-flash</code> / <code>deepseek-v4-pro</code>；Base URL <code>https://api.deepseek.com</code>（OpenAI 格式，不加 /v1）。</div>
+
+<div class="note"><strong>v2.1 更正两处（详见第 6 节）：</strong>① <code>untilBuild</code> 官方<strong>强烈建议不要设置</strong>，只写 <code>sinceBuild</code> 即可开放后续所有构建；② 2025.3（分支 253）起官方产品类型调整，<code>intellijIdeaCommunity()</code> 只适用于更早版本，应改用 <code>intellijIdea()</code>。v2 初版这两处不够准确，已按官方文档更正。</div>
+
+<h3>最小构建脚本骨架（照官方 2.x 写法，具体版本以官方文档为准）</h3>
+<pre>plugins {
+    id("java")
+    id("org.jetbrains.intellij.platform") version "2.19.0"
+}
+repositories {
+    mavenCentral()
+    intellijPlatform { defaultRepositories() }   // 平台依赖来自 JetBrains 仓库
+}
+dependencies {
+    intellijPlatform {
+        intellijIdea("2025.3")                   // 2025.3+ 用统一类型；别写 latest
+        bundledPlugin("com.intellij.java")       // 需要读 Java 文件时声明
+    }
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.x.x")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.x.x")
+}
+intellijPlatform {
+    pluginConfiguration {
+        ideaVersion { sinceBuild = "253" }       // 只设下限，不要写 untilBuild
+    }
+}</pre>
+<p class="small">这段代码不要求你现在看懂；第 2–3 周的学习路径会逐行拆给你。<strong>注意 <code>sinceBuild</code> 与编译目标是两件事</strong>：前者声明产物能装到哪些 IDE，后者决定用哪套 API 编译 —— 详见第 6 节。</p>
+
+<h2>3. 项目规格：做什么，不做什么</h2>
+<div class="card">
+<p><strong>一句话：</strong>在 IDEA 里选中一段 Java 报错，右键「用报错教练讲解」，右侧面板给出中文解释、关联知识点和三级递进提示，并自动存进个人错题库。</p>
+<p><strong>三条用户故事：</strong></p>
+<ol>
+<li>作为学 Java 的学生，我遇到看不懂的堆栈时，选中它点一下，就能看到「这报错在说什么」的大白话解释。</li>
+<li>作为想学会而不是想抄答案的学生，我先看到提示，点「再给一层」才看到更具体的思路，全程不出现可直接复制的完整修复代码。</li>
+<li>作为会重复踩同一个坑的学生，我能在错题库里看到「NullPointerException 出现 7 次」，并回看当时的解释。</li>
+</ol>
+</div>
+<div class="two">
+<div class="card">
+<h3 style="margin-top:0;color:var(--green)">做（P0，必须完成）</h3>
+<ul>
+<li>仅 Java：编译错误 + 高频运行时异常</li>
+<li>选中 Run 窗口文本 → 右键触发（<strong>接受不自动</strong>，这是明确的取舍）</li>
+<li>结构化讲解卡片：错误类型 / 人话解释 / 知识点 / 三级提示 / 自查清单 / 置信度</li>
+<li>6 类错误 → 专属 Skill 模板 + 20 条本地规则库（断网可用）</li>
+<li>超时、429、非法 JSON、无网四条失败路径的降级</li>
+<li>Key 安全存储、最小上下文、路径脱敏</li>
+<li>本地错题库 + 知识点频次统计</li>
+<li>≥15 个单测 + 30 例手工评测表</li>
+</ul>
+</div>
+<div class="card">
+<h3 style="margin-top:0;color:var(--red)">不做（写进 README 的 Scope）</h3>
+<ul>
+<li>自动捕获全部控制台输出 / 全项目上下文（P2，做完再说）</li>
+<li>一键改代码、apply patch</li>
+<li>多语言、Kotlin、其他 IDE</li>
+<li>账号、云端同步、后端服务、数据库</li>
+<li>登录鉴权、插件市场签名与上架</li>
+<li>模型微调、RAG、知识图谱</li>
+<li>花哨 UI、主题、动画</li>
+<li>全版本真机兼容矩阵（L2，选做；L0 声明与 L1 静态验证是必做）</li>
+</ul>
+<p class="small">「不做清单」不是偷懒，是范围管理 —— 单人项目失控几乎都源于没写这一栏。</p>
+</div>
+</div>
+
+<h2>4. 架构与模块设计</h2>
+<p>分四层。<strong>分层的意思</strong>：让「界面」「业务逻辑」「外部调用」互不直接依赖，改其中一层不会连锁改其他层，也才能单独测试。</p>
+<table>
+<tr><th style="width:130px">层</th><th style="width:210px">包 / 类（建议）</th><th>职责</th></tr>
+<tr><td>UI 层</td><td><code>ui.ExplainAction</code><br><code>ui.CoachToolWindowFactory</code><br><code>ui.ExplanationPanel</code></td><td>右键菜单动作、结果面板、「再给一层」按钮。只负责展示，不写业务逻辑</td></tr>
+<tr><td>应用层</td><td><code>app.ExplainService</code><br><code>app.ContextAssembler</code></td><td>编排一次讲解的完整流程：取选中文本 → 组装上下文 → 路由模板 → 调模型 → 归档</td></tr>
+<tr><td>领域层</td><td><code>domain.ErrorClassifier</code><br><code>domain.SkillRegistry</code><br><code>domain.RuleBook</code><br><code>domain.Explanation</code></td><td>纯 Java 逻辑，不依赖 IDE 和网络：错误分类、模板选择、离线规则、结果数据类。<strong>这一层最好测</strong></td></tr>
+<tr><td>基础设施层</td><td><code>infra.DeepSeekClient</code><br><code>infra.SettingsService</code><br><code>infra.MistakeRepository</code><br><code>infra.Cache</code></td><td>HTTP 调用、配置与 Key、持久化、缓存。所有「不确定的外部世界」关在这一层</td></tr>
+</table>
+
+<h3>一次讲解的数据流（五步）</h3>
+<ol>
+<li><strong>捕获：</strong><code>AnAction</code> 从 <code>Editor.getSelectionModel()</code> 拿选中文本；空选则提示「请先选中报错」。</li>
+<li><strong>组装：</strong>只取必要最小集 —— 当前文件名、光标附近 ±20 行、堆栈点名的文件片段、JDK 版本；去掉绝对路径、姓名、学号。</li>
+<li><strong>路由：</strong>正则先判错误类型（NPE / 数组越界 / 类型转换 / 类找不到 / 语法错误 / OOM），命中本地规则库就直接返回，<strong>不调模型</strong>；未命中才套对应 Skill 模板。</li>
+<li><strong>推理：</strong>后台线程（不要在 UI 线程发网络请求，否则 IDE 会卡住）调用 DeepSeek，强制 JSON 返回，带超时与重试。</li>
+<li><strong>呈现与归档：</strong>切回 UI 线程渲染卡片；结果写入错题库；相同文本哈希命中缓存则不重复请求。</li>
+</ol>
+
+<h3>结构化输出契约（设计阶段就要定死）</h3>
+<p>模型必须返回固定 JSON，而不是一大段自由文本 —— 这样 UI 才能分层展示、错题库才能统计、测试才能断言。</p>
+<pre>{
+  "error_type": "NullPointerException",
+  "plain_explanation": "你调用了一个还没有指向任何对象的方法…",
+  "knowledge_points": ["引用与对象", "null 的含义", "初始化时机"],
+  "likely_line": "Main.java:12",
+  "hints": [
+    "level 1: 先看第 12 行，哪个变量可能是 null？",
+    "level 2: 检查这个变量是否只在 if 分支里被赋值",
+    "level 3: 考虑调用前判空，或给构造器一个默认值"
+  ],
+  "self_check": ["打印该变量的值", "确认构造顺序"],
+  "confidence": 0.86
+}</pre>
+<p class="small">提示词里写死三条约束：① 面向只学过一个学期 Java 的新手，先讲概念再讲修法；② 严禁输出完整可复制的修复代码，最多 3 行局部示例；③ 不确定时降低 <code>confidence</code> 并明说「需要看更多上下文」。</p>
+
+<h3>三条必须写进设计的失败路径</h3>
+<table>
+<tr><th style="width:150px">场景</th><th>期望行为</th></tr>
+<tr><td>无网 / 超时 / HTTP 429 / 余额不足</td><td>不白屏、不吞异常：展示本地规则库最接近的一条 + 明确提示「已保存，稍后可重试」</td></tr>
+<tr><td>模型返回非法 JSON 或字段缺失</td><td>解析层抛出可识别的异常 → 降级为纯文本展示，并把该条记入 badcase 列表</td></tr>
+<tr><td>用户没选文本 / 选中的不是报错</td><td>友好提示并给出示例，不发起请求、不消耗 token</td></tr>
+</table>
+
+<h3>关键平台 API 对照（第一次见到时的白话解释）</h3>
+<table class="gloss">
+<tr><th style="width:230px">名词</th><th>白话解释</th></tr>
+<tr><td><b>plugin.xml</b></td><td>插件的「户口本」。类写好了不算数，必须在这里登记，IDE 才会加载它</td></tr>
+<tr><td><b>扩展点（Extension Point / EP）</b></td><td>IDE 预留的插槽。你把实现注册到某个插槽，IDE 在对应时机调用你，而不是你去改 IDE 源码</td></tr>
+<tr><td><b>AnAction</b></td><td>一个菜单项 / 按钮背后的类，用户点击时执行 <code>actionPerformed</code></td></tr>
+<tr><td><b>ToolWindow</b></td><td>IDE 侧边或底部的常驻面板，适合反复查看结果</td></tr>
+<tr><td><b>Service</b></td><td>由 IDE 管理的单例对象，用来放设置、缓存、仓库等跨界面共享的状态</td></tr>
+<tr><td><b>EDT（事件派发线程）</b></td><td>负责画界面的唯一线程。任何耗时操作都必须丢到后台线程，做完再切回来更新界面</td></tr>
+<tr><td><b>PersistentStateComponent</b></td><td>让 IDE 帮你把对象存成 XML，重启后自动恢复，不用自己管文件读写</td></tr>
+<tr><td><b>CredentialStore</b></td><td>IDE 提供的安全凭据仓库，用来存 API Key，比写进配置文件安全</td></tr>
+<tr><td><b>sinceBuild / untilBuild</b></td><td><code>sinceBuild</code> 声明最低兼容的 IDE 分支号（如 253），必填。<strong><code>untilBuild</code> 官方强烈建议不写</strong>：不设上限即兼容后续所有构建，日后要收窄可通过 Marketplace 控制</td></tr>
+<tr><td><b>沙箱 IDE</b></td><td>调试插件时 Gradle 会启动一个全新的临时 IDEA，插件装在其中，不会弄坏你自己的 IDE 配置</td></tr>
+<tr><td><b>降级（fallback）</b></td><td>主路径失败时的备用方案，比如无网时用本地规则库顶上</td></tr>
+</table>
+
+<h2>5. 工程规范：让「练手」练到点上</h2>
+<div class="two">
+<div class="card">
+<h3 style="margin-top:0">Git 与提交</h3>
+<ul>
+<li>一条主线 <code>main</code> 始终保持可编译；每个功能开短分支，做完合并</li>
+<li>提交信息写「为什么」而不只是「改了啥」：<code>feat: 增加 NPE 模板，避免直接给出修复代码</code></li>
+<li>每周打一个 tag：<code>v0.1-hello</code>、<code>v0.2-loop</code>…</li>
+<li>至少认真做一次 <code>git revert</code>，体会版本管理真正的价值</li>
+</ul>
+</div>
+<div class="card">
+<h3 style="margin-top:0">编码与依赖</h3>
+<ul>
+<li>不吞异常：捕获后要么处理、要么包装后上抛，禁止空 catch</li>
+<li>日志分级，但<strong>绝不打印 Key、代码片段、请求体原文</strong></li>
+<li>配置外置：base_url、model、超时、开关都进设置页，不写死</li>
+<li>每加一个依赖都要能说清「为什么不能用 JDK 自带的替代」</li>
+</ul>
+</div>
+</div>
+<div class="note"><strong>安全底线：</strong>API Key 只存 CredentialStore；只上传「必要最小上下文」并做脱敏；设置页提供「本次不上传代码」开关；README 里写清楚数据会发到哪里、发了什么。这几条练的是工程习惯，比功能本身更值钱。</div>
+
+<h2>6. 兼容性策略（v2.1 补充）</h2>
+<p><strong>先厘清一个容易混淆的点：「锁定一个版本编译」不等于「只能装在那一个版本上」。</strong>这是两个独立的旋钮 —— 编译目标（<code>platformVersion</code>）决定用哪套平台 API、哪个 JDK 编译；兼容声明（<code>sinceBuild</code>）决定产物允许被装到哪些 IDE 上。规划锁的是前者，后者应当开放。</p>
+<table>
+<tr><th style="width:130px">层</th><th>做什么</th><th style="width:150px">本项目</th></tr>
+<tr><td><strong>L0 声明层</strong></td><td>只写 <code>sinceBuild = "253"</code>，<strong>不写 <code>untilBuild</code></strong>（官方强烈建议：不设上限即声明兼容 253 及之后所有构建，必要时日后通过 Marketplace 收窄）。跨多版本支持时用<strong>最低</strong>支持版本编译，这是官方建议，在版本间 Java 级别不同时更是强制要求。</td><td><span class="badge b-ok">必做 · W1</span><br>成本近零</td></tr>
+<tr><td><strong>L1 静态验证</strong></td><td><code>./gradlew verifyPlugin</code> 运行官方 Plugin Verifier，检查二进制兼容性、<code>plugin.xml</code> 结构与项目配置；配套还有 <code>verifyPluginStructure</code>、<code>verifyPluginProjectConfiguration</code>。2.15.0 起默认更严：兼容性问题、Internal API 误用、Override-Only API 误用会直接让构建失败；2.14.0 起未显式配置验证目标时自动按 <code>recommended()</code> 从声明范围解析 IDE，也可用 <code>create()</code> 精确指定单版本做冒烟检查。</td><td><span class="badge b-ok">必做 · W11–12</span><br>一条 Gradle 命令</td></tr>
+<tr><td><strong>L2 真机矩阵</strong></td><td>切换 <code>platformVersion</code> 用 <code>runIde</code> 在不同版本沙箱 IDE 里跑一遍核心流程，或把 zip 装到装有不同 IDEA 版本的机器上手工验证。</td><td><span class="badge b-warn">选做</span><br>数小时</td></tr>
+</table>
+
+<h3>这个项目对版本的依赖到底大不大</h3>
+<p><strong>偏小。</strong>它只用到平台最稳定的一批基础 API（<code>AnAction</code>、<code>ToolWindow</code>、<code>Service</code>、<code>PersistentStateComponent</code>、<code>CredentialStore</code>、<code>SelectionModel</code>），网络与 JSON 全在 JDK 侧（<code>HttpClient</code> + Jackson），没碰 PSI、没用 <code>@Internal</code> / <code>@Experimental</code> 标注的 API、也没依赖 Java 语言插件内部实现。所以一次「2025.3 + Java 21」编译，大概率能覆盖 2025.3–2026.1 这一档（同为 Java 21 级别）。</p>
+<div class="warn"><strong>但「偏小」不等于「免验证」：</strong>① 平台每个大版本都有不兼容 API 变更（例：2026.3 移除 Kotlin UI DSL 1.0）；② 2026.2+ 平台自身要求 Java 25，若把编译目标改到那一档就必须换 JDK 25（社区已出现 class file 69.0 与 65.0 不匹配的编译报错）；③ Java 21 的字节码能在 Java 25 运行时上跑，但「能跑」不等于「API 没变」。所以 L1 的作用，就是把「大概率没问题」变成一份可检查的报告。</div>
+
+<h3>范围结论</h3>
+<p>本项目做到 <strong>L0 + L1</strong>：声明开放、跑一次 <code>verifyPlugin</code> 并读懂报告；<strong>L2 与「为每个大版本单独出产物」不列入范围</strong>（已写进不做清单）。README 里放一张三列兼容表：<strong>已验证 / 声明支持 / 未验证</strong>，诚实区分三者，比含糊写「支持新版本」更专业。</p>
+
+<div class="note"><strong>v2.1 修正记录（保留而非静默改掉）：</strong>① 初版写「写清 <code>untilBuild</code>」→ 改为不设 <code>untilBuild</code>；② <code>intellijIdeaCommunity("2025.3")</code> → <code>intellijIdea("2025.3")</code>（IC / PC 产品类型仅适用于 2025.3 之前）；③ Gradle 插件示例 2.18.1 → 2.19.0（以官方当前文档为准）。把修正写进文档，是因为<strong>可追溯的变更记录本身就是第 07 环节要练的东西</strong> —— 规划允许被现实修正，关键是改了什么、为什么改，得看得见。</div>
+
+<h2>7. 测试策略</h2>
+<table>
+<tr><th style="width:130px">类型</th><th>覆盖什么</th><th style="width:190px">怎么做到</th></tr>
+<tr><td>单元测试</td><td>错误分类、Skill 路由、JSON 解析、提示词渲染、缓存哈希、脱敏</td><td>领域层是纯 Java，用 JUnit 5 直接测，不需要启动 IDE</td></tr>
+<tr><td>集成测试</td><td>HTTP 调用、超时、429、非法 JSON、降级路径</td><td>用 JDK 自带 <code>HttpServer</code> 在本地起一个「假 DeepSeek」，返回预设 JSON；不花钱、不依赖网络、可重复</td></tr>
+<tr><td>手工评测</td><td>30 个真实 Java 报错，记录「原因是否说对 / 知识点是否命中 / 有没有违规给完整代码」</td><td>一张表格，W1 开始收集，W11 集中跑</td></tr>
+<tr><td>回归清单</td><td>每次改提示词或改代码后，重跑同一批用例</td><td>把 30 例存成资源文件，避免「改好一个、弄坏三个」</td></tr>
+</table>
+<p class="small">用假接口测网络代码，是这个项目里最值得练的一招：它逼你把「调用外部服务」和「业务逻辑」分开，而这正是分层设计的目的。</p>
+
+<h2>8. 14 周里程碑</h2>
+<p class="small">按每周 10–12 小时估算。愿意多花时间就把每周拆成两周，<strong>不要压缩环节，只拉长节奏</strong>。</p>
+<table>
+<tr><th style="width:66px">周次</th><th style="width:96px">工程环节</th><th>这阶段学什么 / 做什么</th><th style="width:180px">验收（可检查）</th></tr>
+<tr><td>W1–2</td><td>01 + 02</td><td>定规格与不做清单；装 JDK 21 与开发专用 IDEA 2025.3；跑通 Gradle Wrapper、Hello World 插件、沙箱 IDE；Git 建仓；开始收集 30 个真实报错</td><td>菜单里能点出 Hello；预研记录一页；仓库有第一个 tag</td></tr>
+<tr><td>W3–4</td><td>03 + 04</td><td>画架构图、定包结构与 JSON 契约；实现选中文本 → 假接口 → 结果面板的最小闭环（先不接真模型）</td><td><strong>端到端闭环打通（最重要节点）</strong>；架构图与契约定稿</td></tr>
+<tr><td>W5–6</td><td>04</td><td>接真 DeepSeek；6 类 Skill 模板、三级提示、20 条本地规则库；Key 存入 CredentialStore；后台线程与 EDT 切换</td><td>断网时仍能讲解常见错误；IDE 不卡顿；代码里搜不到 Key</td></tr>
+<tr><td>W7–8</td><td>04 + 05</td><td>错题库持久化、知识点统计、缓存；四条失败路径降级；写第一批 JUnit 测试与假接口</td><td>≥10 个单测通过；断网 / 超时 / 非法 JSON 三种情况都不白屏</td></tr>
+<tr><td>W9–10</td><td>05</td><td>补测试到 ≥15 个；跑 30 例手工评测表；根据 badcase 迭代提示词与规则库</td><td>评测表填满；回归清单固化；badcase 有记录</td></tr>
+<tr><td>W11–12</td><td>06 + 07</td><td><code>buildPlugin</code> 打包；只设 <code>sinceBuild</code>、不设 <code>untilBuild</code>；跑 <code>verifyPlugin</code> 并读懂报告；README 写「已验证 / 声明支持 / 未验证」三列兼容表；CHANGELOG、架构图、3 分钟演示</td><td>zip 能在另一台机器安装并跑通；<code>verifyPlugin</code> 无兼容性错误；陌生人按 README 能复现</td></tr>
+<tr><td>W13–14</td><td>08</td><td>找 2–3 位同学试用并记反馈；写复盘：时间估算偏差、卡最久的坑、三条下次改进；整理代码与注释</td><td>一页复盘笔记；仓库打 <code>v1.0</code> tag</td></tr>
+</table>
+<div class="amber"><strong>止损点：</strong>如果 W4 结束仍未打通端到端闭环，不要在 SDK 环境里继续纠缠 —— 把「插件」降级为「选中文本后调用同一个领域层的独立小工具」，保住后面的测试、打包、文档环节。<strong>宁可缩小功能，也不要跳过环节。</strong></div>
+
+<h2>9. 风险与卡点预案</h2>
+<table>
+<tr><th style="width:190px">大概会卡在哪</th><th>怎么办</th></tr>
+<tr><td>Gradle 同步失败 / 依赖拉不下来</td><td>确认用的是 2.x 插件 ID、<code>defaultRepositories()</code>、网络可达；先只跑 <code>runIde</code>，别急着加依赖</td></tr>
+<tr><td>沙箱 IDE 起不来或插件没出现</td><td>九成是 <code>plugin.xml</code> 没登记、JDK 版本与目标平台不匹配、或 <code>sinceBuild</code> 写错；先跑官方示例对照</td></tr>
+<tr><td>IDE 界面卡死</td><td>网络请求放后台线程，UI 更新切回 EDT；这是插件开发最常见的新手错误</td></tr>
+<tr><td>模型返回乱七八糟</td><td>强制 <code>json_object</code>、字段校验、置信度阈值、badcase 回流；高频错误优先走本地规则库</td></tr>
+<tr><td>费用 / 限流</td><td>缓存 + 本地规则库兜底；<code>deepseek-v4-flash</code> 单次约 0.003 元，正常练手基本花不到 10 元</td></tr>
+<tr><td>一个人没动力</td><td>每两周一个可演示产出；每周打 tag；把「这周学会了什么」写进提交记录，用可见进展对抗长期任务</td></tr>
+<tr><td>新版 IDE 显示「不兼容」</td><td>检查是否误写了 <code>untilBuild</code> 上限、<code>sinceBuild</code> 是否用了不存在的分支号；构建号必须是真实值，Plugin Verifier 会校验</td></tr>
+<tr><td><code>verifyPlugin</code> 报 Internal / Override-Only API</td><td>说明用到了不该用的内部 API；换回公开 API 重写该处，不要靠调低 <code>failureLevel</code> 掩盖</td></tr>
+<tr><td>把编译目标误升到 2026.2+</td><td>那一档要求 JDK 25，会出现 class file 版本不匹配；练手阶段保持 2025.3 + JDK 21，需要跨档时单独开分支</td></tr>
+</table>
+<div class="note"><strong>「卡住两小时」规则：</strong>同一个环境问题连续两小时没进展，就停下来，把现象、报错、试过的方法写成一段文字（这本身就是预研记录），然后换一条路或第二天再看。<strong>不要在环境配置上耗尽热情</strong> —— 它不属于你要练的核心能力。</div>
+
+<h2>10. 最终交付清单与验收</h2>
+<div class="card">
+<ul>
+<li>可安装的插件 zip（含兼容范围说明与 README 三列兼容表）</li>
+<li><code>verifyPlugin</code> 输出报告（无兼容性错误，警告已逐条说明）</li>
+<li>源码仓库：清晰提交历史、每周 tag、<code>.gitignore</code>、<code>v1.0</code> 发布标记</li>
+<li>README：这是什么、怎么装、怎么配 Key、数据发到哪里、已知限制、Scope（不做清单）</li>
+<li>架构图 + 模块职责表 + JSON 契约（设计文档）</li>
+<li>测试：≥15 个单测、假接口测试、30 例评测表与回归清单</li>
+<li>CHANGELOG、3 分钟演示录屏、一页复盘笔记</li>
+</ul>
+<p style="margin-bottom:0"><strong>七条验收标准：</strong>① 八环节证据齐全；② 另一台机器可安装并跑通；③ <code>verifyPlugin</code> 无兼容性错误，README 兼容表如实区分「已验证 / 声明支持 / 未验证」；④ 断网时高频错误仍可讲解 ≥20 类；⑤ 完整修复代码泄露 = 0；⑥ 从右键到出结果 ≤5 秒且不卡 UI；⑦ 能白板讲清数据流与三条失败路径。</p>
+</div>
+
+<h2>11. 官方资料入口</h2>
+<p class="small">
+IntelliJ Platform Plugin SDK 官方文档 <a href="https://plugins.jetbrains.com/docs/intellij/">plugins.jetbrains.com/docs/intellij</a>；
+IntelliJ Platform Gradle Plugin 2.x 配置说明 <a href="https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html">tools-intellij-platform-gradle-plugin.html</a>；
+Gradle 配置与 <code>verifyPlugin</code> 任务 <a href="https://plugins.jetbrains.com/docs/intellij/configuring-gradle.html">configuring-gradle.html</a>；
+<code>sinceBuild</code> / <code>until-build</code> 权威说明 <a href="https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html">plugin-configuration-file.html</a>；
+构建号与 Java 版本对应表 <a href="https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html">build-number-ranges.html</a>；
+同一文档站的 Verifying Plugin Compatibility、Incompatible API Changes、Targeting Multiple IDE Versions 三章是兼容性专题；
+Actions / Tool Windows / Persisting State / Execution 等专题页亦在同一文档站；
+官方代码示例仓库 <code>intellij-sdk-code-samples</code>；
+DeepSeek 官方模型与价格 <a href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing">api-docs.deepseek.com</a>；
+JUnit 5 用户指南、Jackson 官方 README。<br>
+<strong>优先级：官方文档 &gt; 官方示例仓库 &gt; 近期博客。</strong>插件 SDK 的 API 变动快，2024 年之前的博客大概率已经失效，遇到矛盾以官方文档为准。
+</p>
+
+<footer>Java 报错教练 · 项目规划 v2.1（练手导向，补充兼容性策略与三处版本更正）· 单人 14 周 · 更新于 2026-11-09 · 配套《学习路径》文档</footer>
+</div>
+</body>
+</html>
