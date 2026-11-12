@@ -1,0 +1,2 @@
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "names[0]" is null
+	at Crash1.main(Crash1.java:4)
