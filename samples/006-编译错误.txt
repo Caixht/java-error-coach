@@ -1,0 +1,2 @@
+Broken.java:3
+java: 不兼容的类型: java.lang.String无法转换为int
