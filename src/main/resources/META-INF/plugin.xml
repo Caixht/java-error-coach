@@ -1,0 +1,11 @@
+<idea-plugin>
+    <id>com.caixht.coach</id>
+    <name>Java 报错教练</name>
+    <vendor>caixht</vendor>
+
+    <description>
+        把一段 Java 报错翻译成初学者能懂的话：是什么、在哪、下一步想什么。
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+</idea-plugin>

@@ -39,3 +39,6 @@ bin/
 ### Mac OS ###
 .DS_Store
 test.txt
+
+# IntelliJ Platform 插件沙箱
+.intellijPlatform/
