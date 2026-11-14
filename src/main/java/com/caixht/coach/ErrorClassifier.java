@@ -25,11 +25,6 @@ public class ErrorClassifier {
         }
         return "未识别";
     }
-
-    /**
-     * 从第一行的 "Exception in thread "main" xxx.yyy: ..." 里取出异常全名。
-     * 取不到返回空串。
-     */
     static String extractExceptionName(String text) {
         String firstLine = text.split("\n")[0];
         String startAnchor = "in thread \"";

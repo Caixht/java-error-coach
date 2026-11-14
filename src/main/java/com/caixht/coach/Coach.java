@@ -14,15 +14,15 @@ public class Coach {
             }
         }
     }
-
-    static void explain(String text) {
+    public static String explain(String text) {
         String type = ErrorClassifier.classify(text);
         String where = LocationFinder.locate(text);
-        System.out.println("报错的类型为: " + type + "->" + HintBook.describe(type));
-        System.out.println("出错的位置在: " + where);
+        StringBuilder result = new StringBuilder();
+        result.append("【报错】").append(type).append(" -> ").append(HintBook.describe(type)).append("\n");
+        result.append("【位置】").append(where).append("\n");
         for (int level = 1; level <= HintBook.levels(type); level++) {
-            System.out.println(level + "." + HintBook.hint(type, where, level));
+            result.append(level).append(". ").append(HintBook.hint(type, where, level)).append("\n");
         }
-        System.out.println();
+        return result.toString();
     }
 }

@@ -8,4 +8,19 @@
     </description>
 
     <depends>com.intellij.modules.platform</depends>
+    <actions>
+        <action id="Coach.ExplainSelection"
+                class="com.caixht.coach.action.ExplainSelectionAction"
+                text="解释选中的报错">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="first"/>
+        </action>
+    </actions>
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Coach"
+                    anchor="right"
+                    secondary="true"
+                    factoryClass="com.caixht.coach.ui.CoachToolWindowFactory"
+                    icon="AllIcons.Toolwindows.ToolWindowMessages"/>
+    </extensions>
 </idea-plugin>
