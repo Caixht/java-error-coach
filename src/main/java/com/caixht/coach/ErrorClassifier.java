@@ -20,7 +20,7 @@ public class ErrorClassifier {
             if (name.equals("java.lang.ClassCastException")) return "类型转换";
             return "未知运行期异常";
         }
-        if (text.contains("错误:") || text.contains("error:") || text.contains("java:")) {
+        if (text.contains("错误:") || text.contains("error:")) {
             return "编译错误";
         }
         return "未识别";
