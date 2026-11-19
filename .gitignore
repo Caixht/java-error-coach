@@ -40,5 +40,6 @@ bin/
 .DS_Store
 test.txt
 
+local.properties
 # IntelliJ Platform 插件沙箱
 .intellijPlatform/

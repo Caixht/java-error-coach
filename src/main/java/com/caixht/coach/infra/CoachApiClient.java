@@ -15,14 +15,22 @@ public class CoachApiClient {
             .build();
 
     public ApiResponse post(String url, String jsonBody) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder(URI.create(url))
+        return post(url, jsonBody, null);
+    }
+
+    public ApiResponse post(String url, String jsonBody, String apiKey)
+            throws IOException, InterruptedException {
+        HttpRequest.Builder builder = HttpRequest.newBuilder(URI.create(url))
                 .timeout(Duration.ofSeconds(10))
                 .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(jsonBody, StandardCharsets.UTF_8))
-                .build();
+                .POST(HttpRequest.BodyPublishers.ofString(jsonBody, StandardCharsets.UTF_8));
+
+        if (apiKey != null && !apiKey.isBlank()) {
+            builder.header("Authorization", "Bearer " + apiKey);
+        }
 
         HttpResponse<String> response =
-                http.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+                http.send(builder.build(), HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
 
         return new ApiResponse(response.statusCode(), response.body());
     }

@@ -1,32 +1,39 @@
 package com.caixht.coach.dev;
 
-import com.caixht.coach.Explanation;
 import com.caixht.coach.infra.ApiResponse;
 import com.caixht.coach.infra.CoachApiClient;
+import com.caixht.coach.infra.LocalConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.List;
+import java.util.Map;
+
 public class ApiTry {
+
     public static void main(String[] args) throws Exception {
+        String key = LocalConfig.key();
+        if (key.isBlank()) {
+            System.out.println("没找到 key：检查 local.properties 里有没有 deepseek.key");
+            return;
+        }
+        System.out.println("key 读到了，长度 " + key.length());
+        String url = "https://api.deepseek.com/chat/completions";
+        var messages = List.of(Map.of("role", "user", "content", "只回复两个字：收到"));
+        var payload = Map.of("model", "deepseek-chat", "messages", messages);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(payload);
+
         CoachApiClient client = new CoachApiClient();
-        String url = "http://localhost:8080/explain";
-        try {
-            ApiResponse resp = client.post(url, "{\"text\":\"试试\"}");
-            if (resp.status() == 429) {
-                System.out.println("问得太快了，等一会儿再问");
-            } else if (resp.status() != 200) {
-                System.out.println("服务出了点问题，状态码 " + resp.status());
-            } else {
-                try {
-                    Explanation e = new ObjectMapper().readValue(resp.body(), Explanation.class);
-                    System.out.println(e.error_type() + " / " + e.plain_explanation());
-                } catch (Exception parseFail) {
-                    System.out.println("它返回的东西我看不懂，这次先不给解释");
-                }
-            }
-        } catch (java.net.http.HttpTimeoutException e) {
-            System.out.println("等了太久，没等到回应");
-        } catch (java.net.ConnectException e) {
-            System.out.println("连不上服务，检查一下它开着没有");
+        ApiResponse resp = client.post(url, json, key);
+        System.out.println("状态码 " + resp.status());
+
+        if (resp.status() == 200) {
+            var root = mapper.readTree(resp.body());
+            String content = root.path("choices").path(0).path("message").path("content").asText();
+            System.out.println("模型说：" + content);
+        } else {
+            System.out.println("返回：" + resp.body());
         }
     }
 }
