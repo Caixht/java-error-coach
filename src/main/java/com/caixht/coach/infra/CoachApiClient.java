@@ -14,7 +14,7 @@ public class CoachApiClient {
             .connectTimeout(Duration.ofSeconds(5))
             .build();
 
-    public String post(String url, String jsonBody) throws IOException, InterruptedException {
+    public ApiResponse post(String url, String jsonBody) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder(URI.create(url))
                 .timeout(Duration.ofSeconds(10))
                 .header("Content-Type", "application/json")
@@ -24,9 +24,6 @@ public class CoachApiClient {
         HttpResponse<String> response =
                 http.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
 
-        if (response.statusCode() != 200) {
-            throw new IOException("HTTP " + response.statusCode());
-        }
-        return response.body();
+        return new ApiResponse(response.statusCode(), response.body());
     }
 }
