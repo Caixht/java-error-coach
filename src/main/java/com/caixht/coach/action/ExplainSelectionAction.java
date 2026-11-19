@@ -1,6 +1,7 @@
 package com.caixht.coach.action;
 
 import com.caixht.coach.Coach;
+import com.caixht.coach.Explanation;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
@@ -24,7 +25,8 @@ public class ExplainSelectionAction extends AnAction {
             return;
         }
         Project project = e.getProject();
-        String result = Coach.explain(text);
+        Explanation explanation = Coach.explain(text);
+        String result = Coach.render(explanation);
         Messages.showInfoMessage(project, result, "Java 报错教练");
     }
 }

@@ -34,6 +34,6 @@ public class FakeServer {
             }
         });
         server.start();
-        System.out.println("假接口已启动: http://localhost:8080/explain");
+        System.out.println("接口已启动: http://localhost:8080/explain");
     }
 }
