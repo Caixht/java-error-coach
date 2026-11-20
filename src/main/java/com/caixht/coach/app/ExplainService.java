@@ -16,13 +16,12 @@ public class ExplainService {
         this.model = model;
     }
 
-    public Explanation explain(String stackText) {
-        Explanation local = Coach.explain(stackText);   // 永远先算，这是兜底
+    public CoachAnswer explain(String stackText) {
+        Explanation local = Coach.explain(stackText);
         try {
-            return model.explain(stackText);
+            return CoachAnswer.fromModel(model.explain(stackText));
         } catch (Exception failed) {
-            System.out.println("模型没拿到，用本地规则：" + failed);
-            return local;
+            return CoachAnswer.fromLocal(local, String.valueOf(failed));
         }
     }
 }
